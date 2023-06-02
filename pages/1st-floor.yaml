@@ -1,0 +1,26 @@
+title: 1st Floor
+path: 1st-floor
+icon: mdi:floor-plan
+badges: []
+cards:
+  - square: false
+    type: grid
+    title: Living Room
+    cards:
+      - type: light
+        entity: light.living_room_lights
+      - type: custom:mini-media-player
+        entity: media_player.living_room_tv
+        icon: mdi:spotify
+        artwork: cover
+        hide:
+          volume: true
+          source: true
+          power_state: false
+      - show_current: true
+        show_forecast: true
+        type: weather-forecast
+        entity: weather.openweathermap
+    columns: 2
+    view_layout:
+      grid-area: Kitchen

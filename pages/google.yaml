@@ -1,0 +1,96 @@
+title: Google
+path: google
+icon: mdi:google
+layout:
+  gridrows: auto
+  grid-template-columns: repeat(4, 1fr) 0
+  grid-template-rows: 0 repeat(2, fit-content(100%)) 0fr
+  grid-template-areas: |
+    "sidebar  .           .       .       ."
+    "sidebar  Homes       Cast  Officemm  ."
+    "sidebar  footer      footer  footer  ."
+type: custom:horizontal-layout
+badges: []
+cards:
+  - title: Google Homes
+    type: vertical-stack
+    cards:
+      - type: custom:mini-media-player
+        entity: media_player.master_bedroom
+        icon_image: /local/ghome.png
+        artwork: cover
+        hide:
+          volume: false
+          source: true
+          power_state: false
+      - type: custom:mini-media-player
+        entity: media_player.hallway_speaker
+        icon_image: /local/ghome.png
+        artwork: cover
+        hide:
+          volume: false
+          source: true
+          power_state: false
+      - type: custom:mini-media-player
+        entity: media_player.command_center_speaker_2
+        icon_image: /local/ghome.png
+        artwork: cover
+        hide:
+          volume: false
+          source: true
+          power_state: false
+      - type: custom:mini-media-player
+        entity: media_player.party
+        icon_image: /local/ghome.png
+        artwork: cover
+        hide:
+          volume: false
+          source: true
+          power_state: false
+      - type: custom:mini-media-player
+        entity: media_player.upstairs
+        icon_image: /local/ghome.png
+        artwork: cover
+        hide:
+          volume: false
+          source: true
+          power_state: false
+      - type: custom:mini-media-player
+        entity: media_player.all
+        icon_image: /local/ghome.png
+        artwork: cover
+        hide:
+          volume: false
+          source: true
+          power_state: false
+    view_layout:
+      grid-area: Homes
+  - title: ChromeCast
+    type: vertical-stack
+    cards:
+      - type: custom:mini-media-player
+        entity: media_player.living_room_tv
+        icon: mdi:cast
+        artwork: cover
+        hide:
+          volume: true
+          source: true
+          power_state: false
+      - type: custom:mini-media-player
+        entity: media_player.theater_tv
+        icon: mdi:cast
+        artwork: cover
+        hide:
+          volume: true
+          source: true
+          power_state: false
+      - type: custom:mini-media-player
+        entity: media_player.kitchen_display
+        icon: mdi:cast
+        artwork: cover
+        hide:
+          volume: true
+          source: true
+          power_state: false
+    view_layout:
+      grid-area: Cast

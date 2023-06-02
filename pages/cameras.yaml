@@ -1,0 +1,59 @@
+title: Cameras
+path: cameras
+icon: mdi:cctv
+layout:
+  gridrows: auto
+  grid-template-columns: repeat(4, 1fr) 0
+  grid-template-rows: 0 repeat(2, fit-content(100%)) 0fr
+  grid-template-areas: |
+    "sidebar  .           H1       .       ."
+    "sidebar  A1          A2      A3      ."
+    "sidebar  B1          B2      B3      ."
+    "sidebar  footer      footer  footer  ."
+type: custom:grid-layout
+badges: []
+cards:
+  - show_state: true
+    show_name: true
+    camera_view: auto
+    type: picture-entity
+    entity: camera.camera_1_camera_1
+    aspect_ratio: '16:10'
+    name: Camera-1
+    view_layout:
+      grid-area: A1
+  - show_state: true
+    show_name: true
+    camera_view: auto
+    type: picture-entity
+    entity: camera.camera_2_camera_2
+    aspect_ratio: '16:10'
+    name: Camera-2
+    view_layout:
+      grid-area: B1
+  - show_state: true
+    show_name: true
+    camera_view: auto
+    type: picture-entity
+    entity: camera.camera_3_camera_3
+    aspect_ratio: '16:10'
+    name: Camera-3
+    view_layout:
+      grid-area: A2
+  - show_state: true
+    show_name: true
+    camera_view: auto
+    type: picture-entity
+    entity: camera.front_door
+    aspect_ratio: '16:10'
+    view_layout:
+      grid-area: B2
+  - show_state: true
+    show_name: true
+    camera_view: auto
+    type: picture-entity
+    entity: camera.wyze_wyze
+    camera_image: camera.wyze_wyze
+    aspect_ratio: '16:10'
+    view_layout:
+      grid-area: sidebar

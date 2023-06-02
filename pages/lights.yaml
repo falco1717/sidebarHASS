@@ -1,0 +1,39 @@
+title: Lights
+path: lights
+icon: mdi:ceiling-light-outline
+layout:
+  gridrows: auto
+  grid-template-columns: repeat(4, 1fr) 0
+  grid-template-rows: 0 repeat(2, fit-content(100%)) 0fr
+  grid-template-areas: |
+    "sidebar  .           H1       .       ."
+    "sidebar  A1          A2      A3      ."
+    "sidebar  B1          B2      B3      ."
+    "sidebar  footer      footer  footer  ."
+cards:
+  - square: true
+    type: grid
+    title: Light Groups
+    cards:
+      - type: light
+        entity: light.master_bedroom_lights
+      - type: light
+        entity: light.master_lamps
+      - type: light
+        entity: light.ceiling_lights
+      - type: light
+        entity: light.living_room_lights
+    columns: 2
+    view_layout:
+      grid-area: A1
+  - square: true
+    type: grid
+    title: Single Lights
+    cards:
+      - type: light
+        entity: light.jordan_lamp
+      - type: light
+        entity: light.wiz_rachel_lamp
+    columns: 2
+    view_layout:
+      grid-area: A2

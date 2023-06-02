@@ -1,0 +1,73 @@
+title: Home
+path: home
+cards:
+  - type: entities
+    entities:
+      - person.falco1717
+  - type: grid
+    square: false
+    columns: 1
+    cards:
+      - type: media-control
+        entity: media_player.all
+      - type: media-control
+        entity: media_player.command_center_speaker_2
+      - type: media-control
+        entity: media_player.guest_bedroom_speaker
+      - type: media-control
+        entity: media_player.hallway_speaker
+      - type: media-control
+        entity: media_player.kitchen_display
+      - type: media-control
+        entity: media_player.living_room_tv
+      - type: media-control
+        entity: media_player.main_floor
+      - type: media-control
+        entity: media_player.master_bathroom_speaker
+      - type: media-control
+        entity: media_player.master_bedroom
+      - type: media-control
+        entity: media_player.master_bedroom_speaker
+      - type: media-control
+        entity: media_player.party
+      - type: media-control
+        entity: media_player.theater_tv
+      - type: media-control
+        entity: media_player.upstairs
+  - type: entities
+    entities:
+      - sensor.hacs
+    title: Sensor
+  - type: entities
+    entities:
+      - entity: sensor.sun_next_dawn
+        name: Next dawn
+      - entity: sensor.sun_next_dusk
+        name: Next dusk
+      - entity: sensor.sun_next_midnight
+        name: Next midnight
+      - entity: sensor.sun_next_noon
+        name: Next noon
+      - entity: sensor.sun_next_rising
+        name: Next rising
+      - entity: sensor.sun_next_setting
+        name: Next setting
+    title: Sun
+  - show_name: true
+    show_icon: true
+    show_state: true
+    type: glance
+    entities:
+      - entity: person.falco1717
+    title: People at home
+  - type: entities
+    entities:
+      - person.falco1717
+  - type: entity-filter
+    entities:
+      - person.falco1717
+    state_filter:
+      - home
+      - not_home
+    card:
+      type: glance

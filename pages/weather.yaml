@@ -1,0 +1,9 @@
+title: Weather
+path: weather
+icon: mdi:weather-cloudy
+badges: []
+cards:
+  - show_current: true
+    show_forecast: true
+    type: weather-forecast
+    entity: weather.openweathermap
