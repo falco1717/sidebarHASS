@@ -1,0 +1,3 @@
+title: Home
+sidebar: !include sidebar.yaml
+views: !include_dir_list pages/

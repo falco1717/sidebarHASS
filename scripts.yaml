@@ -1,0 +1,30 @@
+cast_dashboard:
+  alias: Cast
+  sequence:
+  - service: cast.show_lovelace_view
+    data:
+      entity_id: media_player.kitchen_display
+      dashboard_path: dashboard-test
+      view_path: home
+  mode: single
+  icon: mdi:tablet-dashboard
+cast:
+  alias: cast
+  sequence:
+  - service: cast.show_lovelace_view
+    data:
+      entity_id: media_player.kitchen_display
+      dashboard_path: dashboard-test
+      view_path: home
+  mode: single
+  icon: mdi:tablet-dashboard
+new_script:
+  alias: cast
+  sequence:
+  - service: cast.show_lovelace_view
+    data:
+      entity_id: media_player.kitchen_display
+      dashboard_path: dashboard-test
+      view_path: home
+  mode: single
+  icon: mdi:tablet-dashboard

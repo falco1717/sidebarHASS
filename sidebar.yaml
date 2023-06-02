@@ -1,0 +1,189 @@
+  date: true
+  dateFormat: dddd, MMMM Do
+  clock: false
+  digitalClock: true
+  twelveHourVersion: true
+  period: true
+  hideHassSidebar: true
+  hideTopMenu: true
+  showTopMenuOnMobile: true
+  width:
+    mobile: 0
+    tablet: 25
+    desktop: 18.5
+  breakpoints:
+    mobile: 768
+    tablet: 1024
+  sidebarMenu:
+    - action: navigate
+      navigation_path: /lovelace/home
+      name: Home
+      active: true
+      icon: mdi:home
+    - action: navigate
+      navigation_path: /lovelace/google
+      name: Google
+      active: true
+      icon: mdi:google
+    - action: navigate
+      navigation_path: /lovelace/lights.yaml
+      name: Lights
+      active: true
+      icon: mdi:lightbulb
+    - action: navigate
+      navigation_path: /lovelace/1st-floor
+      name: 1st Floor
+      active: true
+      icon: mdi:floor-plan
+    - action: navigate
+      navigation_path: /lovelace/2nd-floor
+      name: 2nd Floor
+      active: true
+      icon: mdi:stairs-up
+    - action: navigate
+      navigation_path: /lovelace/cameras
+      name: Cameras
+      active: true
+      icon: mdi:cctv
+    - action: navigate
+      navigation_path: /lovelace/media
+      name: Media
+      active: true
+      icon: mdi:television-play
+    - action: navigate
+      navigation_path: /lovelace/xmas
+      name: Xmas Lights
+      active: true
+      icon: mdi:pine-tree
+    - action: navigate
+      navigation_path: /lovelace/it
+      name: Admin/IT
+      active: true
+      icon: mdi:desktop-classic
+  template: |
+    <li>
+      {% if now().hour  < 5 %} Good night, {{ user }} {{'\U0001F634'}}
+      {% elif now().hour < 12 %} Good morning, {{ user }} {{'\u2615\uFE0F'}}
+      {% elif now().hour < 18 %} Good afternoon, {{ user }} {{'\U0001F44B\U0001F3FB'}}
+      {% else %} Good evening, {{ user }} {{'\U0001F44B\U0001F3FB'}}{% endif %}
+    </li> <li>
+      {% if expand(states.light)|
+         selectattr('state','eq','on')|
+         rejectattr('attributes.type','eq','browser_mod' )|rejectattr('attributes.friendly_name','search','Under') | list | count
+       == 1 %}
+        There is a light on
+       {% elif expand(states.light)|
+         selectattr('state','eq','on')|
+         rejectattr('attributes.type','eq','browser_mod' )|rejectattr('attributes.friendly_name','search','Under') | list | count
+       > 1 %}
+        There are {{ expand(states.light)|
+        selectattr('state','eq','on')|
+        rejectattr('attributes.type','eq','browser_mod' )|rejectattr('attributes.friendly_name','search','Under') | list | count
+         }} lights on
+       {% else %}
+        All lights are off
+      {% endif %}
+    </li>
+  bottomCard:
+    type: custom:layout-card
+    layout_type: custom:vertical-layout
+    layout:
+      max_cols: 1
+    cardStyle: |
+      :host {
+        width: 100% !important;
+        position: absolute;
+        bottom: 0%;
+        left: 0%;
+      }
+      .column.cards {
+        max-width: 100% !important;
+      }
+      .cards > :last-child {
+        margin: 0px !important;
+      }
+    cardOptions:
+      cards:
+        - type: entity-filter
+          entities:
+            - person.falco1717
+          state_filter:
+            - home
+          card:
+            type: glance
+            title: People at home
+            show_state: false
+            show_name: false
+            card_mod:
+              style:
+                .: |
+                  ha-card {
+                    border: none;
+                  }
+                  .entity {
+                    align-items: baseline !important;
+                  }
+                $: |
+                  .card-header {
+                    font-size: 15px !important;
+                    padding: 12px 16px 1px !important;
+                    line-height: 30px !important;
+                  }
+                      
+        - type: custom:simple-weather-card
+          backdrop: false
+          entity: weather.openweathermap
+          name: ' '
+          tap_action:
+            action: navigate
+            navigation_path: /lovelace/weather
+          style: |
+            ha-card {
+              background: none  !important;
+              box-shadow: none !important;
+              padding: 0 !important;
+              margin: 4px;
+              font-size: 1vw;
+              border: none;
+            }
+        - type: custom:mini-graph-card
+          tap_action:
+            action: none
+          show:
+            icon: false
+            legend: false
+            name: false
+          entities:
+            - sensor.openweathermap_temperature
+          font_size: 35
+          update_interval: 15
+          font_size_header: 9
+          hours_to_show: 24
+          points_per_hour: 1
+          icon: mdi:home-thermometer-outline
+          color_thresholds:
+            - color: '#4dd2ff'
+              value: 0
+            - color: '#ffa31a'
+              value: 20
+            - color: '#ff1a1a'
+              value: 0
+          style: |
+            ha-card, ha-card > div {
+              padding: 0px !important;
+              border: none;
+
+            }
+            ha-card > .header.flex > div, ha-card > .states.flex > div {
+              padding: 5px !important;
+              font-weight: 500;
+            } 
+            ha-card > .info.flex > .info__item > .info__item__time {
+              display: none;
+            }
+            ha-card {
+              background-color: rgba(40,40,40,0);
+            }
+            .name > span {
+              font-weight: 500 !important;
+            }

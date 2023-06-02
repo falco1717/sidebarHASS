@@ -1,0 +1,49 @@
+
+# Loads default set of integrations. Do not remove.
+default_config:
+
+# Add the /tmp folder
+homeassistant:
+  allowlist_external_dirs:
+  - "/tmp"
+
+# Add cloud integration
+
+cloud:
+
+# Text to speech
+tts:
+  - platform: google_translate
+
+# Uncomment below for script automation and scene integration
+
+#script: !include scripts.yaml
+automation: !include automations.yaml
+#scene: !include scenes.yaml
+template: !include sidebar.yaml
+
+frontend:
+  extra_module_url:
+    - /hacsfiles/lovelace-card-mod/card-mod.js
+  themes: !include_dir_merge_named themes
+
+lovelace:
+  mode: yaml
+  resources:
+    - url: /hacsfiles/sidebar-card/sidebar-card.js
+      type: module
+    - url: /hacsfiles/lovelace-layout-card/layout-card.js
+      type: module
+    - url: /hacsfiles/mini-graph-card/mini-graph-card-bundle.js
+      type: module      
+    - url: /hacsfiles/simple-weather-card/simple-weather-card-bundle.js
+      type: module
+    - url: /hacsfiles/mini-media-player/mini-media-player-bundle.js
+      type: module
+
+# Http entry for traefik
+http:
+  use_x_forwarded_for: true
+  trusted_proxies:
+    - 172.19.0.0/24
+    - fd00:dead:beef::/48      
