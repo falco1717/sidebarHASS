@@ -26,8 +26,9 @@ Grid
         "sidebar  A1          A2      A3      ."
         "sidebar  B1          B2      B3      ."
         "sidebar  footer      footer  footer  ."
-
-    Once the layout is added you will then use a custom:grid-layout card and place the object in the grid.
+    
+Once the layout is added you will then use a custom:grid-layout card and place the object in the grid.
+    
       - show_state: true
         show_name: true
         camera_view: auto
@@ -38,5 +39,5 @@ Grid
         view_layout:
           grid-area: A1
 
-    This places the camera1 entity on A1 within the grid.
+This places the camera1 entity on A1 within the grid.
  
