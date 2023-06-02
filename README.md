@@ -1,6 +1,9 @@
 # sidebarHASS
 Homeassistant layout with the sidebar card
 
+![image](https://github.com/falco1717/sidebarHASS/assets/74680727/702c5ba6-f532-408b-8b28-7a31730f265c)
+
+
 Required HACS Frontend Mods
   mini-graph-card
   simple-weather-card
